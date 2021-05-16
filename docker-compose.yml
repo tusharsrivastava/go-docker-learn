@@ -1,0 +1,9 @@
+version: "3"
+services: 
+    application:
+        build: .
+        container_name: go-docker-learn
+        ports:
+            - "8080:8080"
+        environment: 
+            - "PORT=8080"
