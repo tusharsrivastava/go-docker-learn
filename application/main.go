@@ -13,7 +13,7 @@ func main() {
 	server := CreateServer(config)
 
 	server.AddRoute("/", handleIndex)
-	server.AddRoute("/audio/", handleStream)
+	server.AddRoute("/audio", handleStream)
 
 	UnhandledErrors(server.Run())
 }
@@ -65,7 +65,8 @@ func handleStream(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	w.Header().Set("Tranfer-Encoding", "chunked")
+	w.Header().Add("Tranfer-Encoding", "chunked")
+	w.Header().Add("Cache-Control", "no-store")
 
 	var b []byte = make([]byte, chunkSize)
 
