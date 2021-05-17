@@ -65,7 +65,7 @@ func handleStream(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	w.Header().Add("Tranfer-Encoding", "chunked")
+	w.Header().Add("Transfer-Encoding", "chunked")
 	w.Header().Add("Cache-Control", "no-store")
 
 	var b []byte = make([]byte, chunkSize)
