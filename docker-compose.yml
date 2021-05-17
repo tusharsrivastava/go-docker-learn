@@ -7,3 +7,7 @@ services:
             - "8080:8080"
         environment: 
             - "PORT=8080"
+            - "CHUNK_SIZE=1048576"
+        volumes: 
+            - ./application/data:/application/data
+            - ./application/templates:/application/templates

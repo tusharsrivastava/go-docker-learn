@@ -13,6 +13,8 @@ COPY --from=build /application/dist /application
 
 COPY --from=build /application/data /application/data
 
-RUN apk add  --no-cache ffmpeg
+COPY --from=build /application/templates /application/templates
+
+# RUN apk add  --no-cache ffmpeg
 
 CMD ["/application/go-docker-learn"]

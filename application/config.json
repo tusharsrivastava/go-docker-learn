@@ -3,5 +3,5 @@
         "Host": "localhost",
         "Port": 80
     },
-    "ChunkSize": 512000
+    "ChunkSize": 1048576
 }

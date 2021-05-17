@@ -9,7 +9,7 @@ type ServerApplication struct {
 	config *Configurations
 }
 
-type HandlerFunc func(http.ResponseWriter, *http.Request)
+type HandlerFunc func(*ServerApplication) func(http.ResponseWriter, *http.Request)
 
 func CreateServer(config *Configurations) *ServerApplication {
 	server := &ServerApplication{
@@ -32,5 +32,5 @@ func (a *ServerApplication) Run() error {
 }
 
 func (a *ServerApplication) AddRoute(pattern string, handler HandlerFunc) {
-	http.HandleFunc(pattern, handler)
+	http.HandleFunc(pattern, handler(a))
 }
